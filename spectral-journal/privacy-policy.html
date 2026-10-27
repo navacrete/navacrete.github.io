@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Spectral Journal Privacy Policy</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+  /* Layout: one reading column, section headings as a quiet left-hand rail of labels. */
+  :root {
+    --bg: #f6f5f2;
+    --fg: #1f2128;
+    --muted: #5d6170;
+    --rule: #d9d7d0;
+    --accent: #5a4bd6;
+    --panel: #ffffff;
+    --display: "Source Serif 4", Georgia, "Times New Roman", serif;
+    --body: "IBM Plex Sans", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0f1116; --fg: #eceef7; --muted: #9aa0b4; --rule: #2a2e3b; --accent: #a79cff; --panel: #181b23;
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0f1116; --fg: #eceef7; --muted: #9aa0b4; --rule: #2a2e3b; --accent: #a79cff; --panel: #181b23;
+    color-scheme: dark;
+  }
+  body {
+    background: var(--bg); color: var(--fg); font-family: var(--body); font-size: 16px; line-height: 1.6;
+    padding-left: max(16px, env(safe-area-inset-left, 0px));
+    padding-right: max(16px, env(safe-area-inset-right, 0px));
+    padding-block: 40px 64px;
+  }
+  main { max-width: 42rem; margin: 0 auto; }
+  h1 { font-family: var(--display); font-weight: 600; font-size: 2rem; line-height: 1.15; margin: 0 0 .4rem; text-wrap: balance; }
+  .meta { color: var(--muted); font-size: .875rem; margin: 0 0 2rem; }
+  .summary { background: var(--panel); border-left: 3px solid var(--accent); padding: 1rem 1.25rem; margin: 0 0 2rem; }
+  .summary p { margin: 0; font-size: 1.05rem; }
+  h2 { font-family: var(--body); font-size: .8rem; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin: 2rem 0 .5rem; padding-top: 1rem; border-top: 1px solid var(--rule); }
+  p { margin: 0 0 .9rem; max-width: 65ch; }
+  code { font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; font-size: .92em; background: var(--panel); padding: .05em .35em; border-radius: 3px; }
+  .contact { display: flex; flex-wrap: wrap; gap: .5rem 1rem; align-items: center; }
+  .contact span { font-family: ui-monospace, Menlo, Consolas, monospace; user-select: all; }
+  .contact button { font: inherit; font-size: .85rem; padding: .3rem .7rem; border: 1px solid var(--rule); background: var(--panel); color: var(--fg); border-radius: 4px; cursor: pointer; }
+  .contact button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .lang { margin-top: 3.5rem; }
+  .lang h1 { font-size: 1.5rem; }
+  .fine { color: var(--muted); font-size: .85rem; margin-top: 2.5rem; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Spectral Journal Privacy Policy</h1>
+  <p class="meta">Last updated 27 October 2026 · Android app “Spectral Journal – Ghost Guide”, package <code>com.spectraljournal.app</code></p>
+
+  <div class="summary">
+    <p>Spectral Journal does not collect, store, transmit or share any personal data. Everything except the News tab works entirely offline on your device.</p>
+  </div>
+
+  <h2>Who we are</h2>
+  <p>Spectral Journal is published by an independent developer based in Greece (the developer named on the app's Google Play listing). This policy covers the app only.</p>
+
+  <h2>Data we collect</h2>
+  <p>None. The app has no user accounts, no analytics, no advertising SDKs and no crash-reporting SDKs of its own. It does not request access to your location, contacts, camera, microphone, photos, files or any other sensitive permission.</p>
+
+  <h2>Network access (News tab)</h2>
+  <p>The News tab downloads the game's public announcements feed from Valve's Steam Web API (<code>api.steampowered.com</code>). This is an ordinary web request: like any website you visit, Valve's servers see your device's IP address. We do not receive, store or process anything from that request, and no identifier of yours is sent with it. The downloaded announcements are kept on your device so the tab also works offline. Tapping a link opens it in your browser or in the Steam, Twitch or Discord app, each governed by its own privacy policy.</p>
+
+  <h2>Permissions</h2>
+  <p>The app declares four permissions: <code>INTERNET</code>, used only by the News tab as described above; <code>VIBRATE</code>, for a short vibration when a timer finishes; <code>POST_NOTIFICATIONS</code>, so the app can show a local notification when a timer finishes and a silent countdown while a timer runs in the background (you can decline this and timers still work); and <code>FOREGROUND_SERVICE</code>, which lets a timer keep counting for up to three minutes while you switch back to the game. None of these gives access to personal data, and no notification content ever leaves your device.</p>
+
+  <h2>Data stored on your device</h2>
+  <p>Your journal selections and tool settings are kept in the app's memory while it is open, and the last downloaded news list is saved in the app's private storage. Nothing is written to shared storage and nothing leaves your device. Uninstalling the app removes all of it.</p>
+
+  <h2>Google Play</h2>
+  <p>Google Play may collect anonymised install and crash statistics under Google's own privacy policy. We see only the aggregated figures Google shows developers, never personal data.</p>
+
+  <h2>Children</h2>
+  <p>The app is a reference companion for a horror video game rated for older teens and adults and is not directed at children under 13.</p>
+
+  <h2>Account deletion</h2>
+  <p>The app has no accounts, so there is nothing to delete. Uninstalling the app removes all of its data.</p>
+
+  <h2>Changes</h2>
+  <p>If the app ever starts processing personal data, this page will be updated first and the change will be described in the app's release notes on Google Play.</p>
+
+  <h2>Contact</h2>
+  <p class="contact"><span id="mail-en">navacrete@gmail.com</span><button type="button" data-copy="mail-en">Copy address</button></p>
+
+  <p class="fine">Spectral Journal is an unofficial fan-made companion. Phasmophobia is a trademark of Kinetic Games Ltd. This app is not affiliated with or endorsed by Kinetic Games and contains no assets from the game.</p>
+
+  <section class="lang">
+    <h1>Πολιτική Απορρήτου (Ελληνικά)</h1>
+    <p class="meta">Τελευταία ενημέρωση 27 Οκτωβρίου 2026</p>
+
+    <h2>Συνοπτικά</h2>
+    <p>Το Spectral Journal δεν συλλέγει, δεν αποθηκεύει, δεν μεταδίδει και δεν μοιράζεται κανένα προσωπικό δεδομένο. Όλα εκτός από την καρτέλα «Νέα» λειτουργούν εξ ολοκλήρου εκτός σύνδεσης.</p>
+
+    <h2>Δεδομένα</h2>
+    <p>Δεν υπάρχουν λογαριασμοί χρηστών, αναλυτικά στοιχεία, διαφημίσεις ή εργαλεία αναφοράς σφαλμάτων. Η εφαρμογή δεν ζητά πρόσβαση σε τοποθεσία, επαφές, κάμερα, μικρόφωνο, φωτογραφίες ή αρχεία.</p>
+
+    <h2>Καρτέλα «Νέα»</h2>
+    <p>Κατεβάζει τις δημόσιες ανακοινώσεις του παιχνιδιού από το Steam Web API της Valve (<code>api.steampowered.com</code>). Όπως σε κάθε ιστοσελίδα, οι διακομιστές της Valve βλέπουν τη διεύθυνση IP της συσκευής· εμείς δεν λαμβάνουμε και δεν επεξεργαζόμαστε τίποτα. Οι ανακοινώσεις αποθηκεύονται στη συσκευή για offline προβολή.</p>
+
+    <h2>Άδειες</h2>
+    <p>Διαδίκτυο (<code>INTERNET</code>, μόνο για τα Νέα), δόνηση (<code>VIBRATE</code>), ειδοποιήσεις (<code>POST_NOTIFICATIONS</code>, τοπικές ειδοποιήσεις χρονομέτρων — μπορείς να τις αρνηθείς) και υπηρεσία προσκηνίου (<code>FOREGROUND_SERVICE</code>, ώστε ένα χρονόμετρο να συνεχίζει έως 3 λεπτά όσο γυρίζεις στο παιχνίδι). Καμία δεν δίνει πρόσβαση σε προσωπικά δεδομένα.</p>
+
+    <h2>Αποθήκευση στη συσκευή</h2>
+    <p>Οι επιλογές σας και η τελευταία λίστα νέων κρατούνται στον ιδιωτικό χώρο της εφαρμογής και διαγράφονται με την απεγκατάσταση. Δεν υπάρχουν λογαριασμοί, άρα δεν υπάρχει τίποτα προς διαγραφή.</p>
+
+    <h2>Επικοινωνία</h2>
+    <p class="contact"><span id="mail-el">navacrete@gmail.com</span><button type="button" data-copy="mail-el">Αντιγραφή</button></p>
+
+    <p class="fine">Ανεπίσημη εφαρμογή θαυμαστών. Το Phasmophobia είναι σήμα κατατεθέν της Kinetic Games Ltd. Η εφαρμογή δεν συνδέεται και δεν εγκρίνεται από την Kinetic Games και δεν περιέχει υλικό από το παιχνίδι.</p>
+  </section>
+</main>
+
+<script>
+  document.querySelectorAll("button[data-copy]").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      var el = document.getElementById(btn.getAttribute("data-copy"));
+      var text = el.textContent;
+      var done = function () { var old = btn.textContent; btn.textContent = "✓"; setTimeout(function () { btn.textContent = old; }, 1200); };
+      var fallback = function () {
+        var r = document.createRange(); r.selectNodeContents(el);
+        var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(done, fallback);
+      } else { fallback(); }
+    });
+  });
+</script>
+</body>
+</html>
