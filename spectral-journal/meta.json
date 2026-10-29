@@ -2,6 +2,10 @@
   "latestVersionCode": 7,
   "latestVersionName": "0.9.6-beta",
   "messageId": "",
-  "message": { "en": "", "el": "" },
-  "messageUrl": ""
+  "message": {
+    "en": "",
+    "el": ""
+  },
+  "messageUrl": "",
+  "roomServer": "https://spectral-journal.high-beach-hotels.workers.dev"
 }
