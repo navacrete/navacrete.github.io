@@ -32,6 +32,10 @@ REDDIT_LEAKS = (
     "%20OR%20console%20OR%20playstation%20OR%20xbox&restrict_sr=1&sort=new&limit=30&raw_json=1"
 )
 REDDIT_RSS = f"https://www.reddit.com/r/{SUB}/hot.rss?limit=40"
+REDDIT_LEAKS_RSS = (
+    f"https://www.reddit.com/r/{SUB}/search.rss?q=leak%20OR%20datamine%20OR%20spoiler%20OR%20%22dev%20preview%22"
+    "%20OR%20console%20OR%20playstation%20OR%20xbox&restrict_sr=1&sort=new&limit=30"
+)
 UA = "SpectralJournalFeed/1.0 (+https://navacrete.github.io/; unofficial Phasmophobia companion app)"
 COMMUNITY_MAX_AGE = 60 * 60  # refresh Reddit at most hourly – it changes constantly and we do not want 96 commits a day
 
@@ -83,8 +87,8 @@ def reddit_listing(url):
     return out
 
 
-def reddit_rss():
-    xml = get(REDDIT_RSS, "application/atom+xml, application/xml, text/xml")
+def reddit_rss(url=REDDIT_RSS):
+    xml = get(url, "application/atom+xml, application/xml, text/xml")
     ns = {"a": "http://www.w3.org/2005/Atom"}
     root = ET.fromstring(xml)
     out = []
@@ -121,8 +125,12 @@ def community():
     try:
         leaks = reddit_listing(REDDIT_LEAKS)
     except Exception as ex:  # noqa: BLE001
-        print(f"reddit leaks failed ({ex})", file=sys.stderr)
-        leaks = []
+        print(f"reddit leaks json failed ({ex}); trying rss", file=sys.stderr)
+        try:
+            leaks = reddit_rss(REDDIT_LEAKS_RSS)
+        except Exception as ex2:  # noqa: BLE001
+            print(f"reddit leaks rss failed ({ex2})", file=sys.stderr)
+            leaks = []
     seen, out = set(), []
     for it in hot + leaks:
         if it["gid"] in seen:
