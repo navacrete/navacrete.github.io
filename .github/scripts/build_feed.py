@@ -138,13 +138,15 @@ def community():
 def main():
     now = int(time.time())
     previous = load_json(OUT, {})
-    feed = {"generatedAt": now, "steam": None, "community": None, "communityAt": 0, "meta": load_json(META, {})}
+    feed = {"generatedAt": now, "steam": None, "community": None, "communityAt": 0, "meta": load_json(META, {}), "status": {}}
+    status = feed["status"]
 
     # Official + press (required)
     try:
         feed["steam"] = steam_news()
     except Exception as ex:  # noqa: BLE001
         print(f"steam failed: {ex}", file=sys.stderr)
+        status["steamError"] = str(ex)[:200]
         feed["steam"] = previous.get("steam")
         if not feed["steam"]:
             sys.exit(1)
@@ -157,6 +159,7 @@ def main():
             feed["communityAt"] = now
         except Exception as ex:  # noqa: BLE001
             print(f"community failed: {ex}", file=sys.stderr)
+            status["communityError"] = str(ex)[:200]
             feed["community"] = previous.get("community")
             feed["communityAt"] = prev_at
     else:
@@ -165,7 +168,7 @@ def main():
 
     # Write only when something other than the timestamp changed.
     def core(f):
-        return {k: v for k, v in f.items() if k != "generatedAt"}
+        return {k: v for k, v in f.items() if k not in ("generatedAt", "status")}
 
     if core(previous) == core(feed):
         print("feed unchanged")

@@ -36,12 +36,12 @@ jobs:
 
       - name: Commit when changed
         run: |
-          if git diff --quiet -- spectral-journal/feed.json; then
+          git add spectral-journal/feed.json
+          if git diff --cached --quiet; then
             echo "no change"; exit 0
           fi
           git config user.name "feed-bot"
           git config user.email "feed-bot@users.noreply.github.com"
-          git add spectral-journal/feed.json
           git commit -q -m "feed: $(date -u +'%Y-%m-%d %H:%M') UTC"
           git pull --rebase -q origin main || true
           git push -q origin HEAD:main
