@@ -53,7 +53,7 @@
 <body>
 <main>
   <h1>Spectral Journal Privacy Policy</h1>
-  <p class="meta">Last updated 27 October 2026 · Android app “Spectral Journal – Ghost Guide”, package <code>com.spectraljournal.app</code></p>
+  <p class="meta">Last updated 29 October 2026 · Android app “Spectral Journal – Ghost Guide”, package <code>com.spectraljournal.app</code></p>
 
   <div class="summary">
     <p>Spectral Journal does not collect, store, transmit or share any personal data. Everything except the News tab works entirely offline on your device.</p>
@@ -66,7 +66,7 @@
   <p>None. The app has no user accounts, no analytics, no advertising SDKs and no crash-reporting SDKs of its own. It does not request access to your location, contacts, camera, microphone, photos, files or any other sensitive permission.</p>
 
   <h2>Network access (News tab)</h2>
-  <p>The News tab downloads the game's public announcements feed from Valve's Steam Web API (<code>api.steampowered.com</code>). This is an ordinary web request: like any website you visit, Valve's servers see your device's IP address. We do not receive, store or process anything from that request, and no identifier of yours is sent with it. The downloaded announcements are kept on your device so the tab also works offline. Tapping a link opens it in your browser or in the Steam, Twitch or Discord app, each governed by its own privacy policy.</p>
+  <p>The News tab downloads one pre-built file, <code>feed.json</code>, from this website (<code>navacrete.github.io</code>, hosted by GitHub Pages). That file is produced every 15 minutes by an automated script that merges the game's public announcements from Valve's Steam Web API (<code>api.steampowered.com</code>) with public posts from the game's subreddit (<code>reddit.com</code>), plus an optional short message from us (for example "a new version is available"). If the file cannot be reached, the app asks Steam and Reddit directly instead. These are ordinary web requests: like any website you visit, the server you contact (GitHub, Valve or Reddit) sees your device's IP address. We do not receive, store or process anything from those requests, and no identifier of yours is sent with them. The downloaded items are kept on your device so the tab also works offline. Tapping a link opens it in your browser or in the Steam, Twitch, Reddit or Discord app, each governed by its own privacy policy.</p>
 
   <h2>Background news check and voice</h2>
   <p>If you leave "Notify me about new official announcements" switched on (Settings), the app repeats the same public feed request in the background every few hours, using Android's WorkManager, and shows a local notification when there is a new official post. Nothing about you is sent with that request either; you can switch it off at any time. Voice alerts use the text-to-speech engine installed on your device; the text to be spoken is handed to that engine on the device and is governed by the engine's own privacy policy if it is a network engine you installed.</p>
@@ -96,7 +96,7 @@
 
   <section class="lang">
     <h1>Πολιτική Απορρήτου (Ελληνικά)</h1>
-    <p class="meta">Τελευταία ενημέρωση 27 Οκτωβρίου 2026</p>
+    <p class="meta">Τελευταία ενημέρωση 29 Οκτωβρίου 2026</p>
 
     <h2>Συνοπτικά</h2>
     <p>Το Spectral Journal δεν συλλέγει, δεν αποθηκεύει, δεν μεταδίδει και δεν μοιράζεται κανένα προσωπικό δεδομένο. Όλα εκτός από την καρτέλα «Νέα» λειτουργούν εξ ολοκλήρου εκτός σύνδεσης.</p>
@@ -105,7 +105,7 @@
     <p>Δεν υπάρχουν λογαριασμοί χρηστών, αναλυτικά στοιχεία, διαφημίσεις ή εργαλεία αναφοράς σφαλμάτων. Η εφαρμογή δεν ζητά πρόσβαση σε τοποθεσία, επαφές, κάμερα, μικρόφωνο, φωτογραφίες ή αρχεία.</p>
 
     <h2>Καρτέλα «Νέα»</h2>
-    <p>Κατεβάζει τις δημόσιες ανακοινώσεις του παιχνιδιού από το Steam Web API της Valve (<code>api.steampowered.com</code>). Όπως σε κάθε ιστοσελίδα, οι διακομιστές της Valve βλέπουν τη διεύθυνση IP της συσκευής· εμείς δεν λαμβάνουμε και δεν επεξεργαζόμαστε τίποτα. Οι ανακοινώσεις αποθηκεύονται στη συσκευή για offline προβολή.</p>
+    <p>Κατεβάζει ένα έτοιμο αρχείο, <code>feed.json</code>, από αυτόν τον ιστότοπο (<code>navacrete.github.io</code>, φιλοξενία GitHub Pages). Το αρχείο παράγεται κάθε 15 λεπτά από αυτόματο σενάριο που συγχωνεύει τις δημόσιες ανακοινώσεις του παιχνιδιού από το Steam Web API της Valve (<code>api.steampowered.com</code>) με δημόσιες αναρτήσεις από το subreddit του παιχνιδιού (<code>reddit.com</code>), και ένα προαιρετικό σύντομο μήνυμά μας (π.χ. «υπάρχει νέα έκδοση»). Αν το αρχείο δεν είναι προσβάσιμο, η εφαρμογή ρωτά απευθείας το Steam και το Reddit. Όπως σε κάθε ιστοσελίδα, ο διακομιστής που επικοινωνείτε (GitHub, Valve ή Reddit) βλέπει τη διεύθυνση IP της συσκευής· εμείς δεν λαμβάνουμε και δεν επεξεργαζόμαστε τίποτα. Τα στοιχεία αποθηκεύονται στη συσκευή για offline προβολή.</p>
 
     <h2>Έλεγχος νέων στο παρασκήνιο και φωνή</h2>
     <p>Αν αφήσετε ενεργή την ειδοποίηση για νέες επίσημες ανακοινώσεις (Ρυθμίσεις), η εφαρμογή επαναλαμβάνει το ίδιο δημόσιο αίτημα στο παρασκήνιο κάθε λίγες ώρες (Android WorkManager) και δείχνει τοπική ειδοποίηση όταν υπάρχει νέα ανάρτηση. Ούτε εδώ αποστέλλεται κάτι για εσάς· απενεργοποιείται όποτε θέλετε. Οι φωνητικές ειδοποιήσεις χρησιμοποιούν τη μηχανή μετατροπής κειμένου σε ομιλία της συσκευής σας.</p>
