@@ -1,0 +1,47 @@
+name: Build news feed
+
+# Every 15 minutes: fetch the Phasmophobia news (Steam) and community posts (Reddit) and publish
+# them as spectral-journal/feed.json through GitHub Pages. The Spectral Journal app reads this one
+# file instead of asking three sites itself. Commits only when the content changed.
+
+on:
+  schedule:
+    - cron: "*/15 * * * *"
+  workflow_dispatch:
+  push:
+    paths:
+      - "spectral-journal/meta.json"
+      - ".github/scripts/build_feed.py"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: feed
+  cancel-in-progress: false
+
+jobs:
+  feed:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Build feed.json
+        run: python3 .github/scripts/build_feed.py
+
+      - name: Commit when changed
+        run: |
+          if git diff --quiet -- spectral-journal/feed.json; then
+            echo "no change"; exit 0
+          fi
+          git config user.name "feed-bot"
+          git config user.email "feed-bot@users.noreply.github.com"
+          git add spectral-journal/feed.json
+          git commit -q -m "feed: $(date -u +'%Y-%m-%d %H:%M') UTC"
+          git pull --rebase -q origin main || true
+          git push -q origin HEAD:main
