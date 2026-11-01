@@ -1,0 +1,14 @@
+{
+  "name": "Spectral Journal – Team room",
+  "short_name": "Spectral Room",
+  "description": "Join a Spectral Journal team room from any browser: shared evidence journal, timers, sanity and party mode for Phasmophobia nights.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#0b0d14",
+  "theme_color": "#0b0d14",
+  "icons": [
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}

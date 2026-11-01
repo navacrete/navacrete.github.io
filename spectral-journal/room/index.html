@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0b0d14">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Spectral Room">
+<meta name="description" content="Join a Spectral Journal team room from any phone or browser: shared evidence journal, ghost filter, timers, sanity and party mode for Phasmophobia nights.">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<title>Spectral Journal – Team room</title>
+<style>
+  :root{
+    --bg:#0b0d14;--card:#141826;--card2:#1a1f30;--line:rgba(255,255,255,.08);--fg:#eef0f6;--muted:#9aa0b4;
+    --green:#5fe3a1;--violet:#a79cff;--amber:#ffb84d;--red:#ff5c6c;--twitch:#bf94ff;
+    --radius:14px;--pad:14px;--safe-b:env(safe-area-inset-bottom,0px);
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.4 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;-webkit-text-size-adjust:100%}
+  body{min-height:100dvh;overscroll-behavior-y:none}
+  button,input,select{font:inherit;color:inherit}
+  button{cursor:pointer;border:0;border-radius:12px;background:var(--card2);padding:10px 14px;min-height:44px;transition:transform .08s}
+  button:active{transform:scale(.97)}
+  button.primary{background:var(--violet);color:#0b0d14;font-weight:700}
+  button.ok{background:rgba(95,227,161,.18);color:var(--green);font-weight:700}
+  button.danger{background:rgba(255,92,108,.16);color:var(--red)}
+  button.ghost{background:transparent;color:var(--muted)}
+  button:disabled{opacity:.45;cursor:default}
+  input[type=text],select{width:100%;padding:11px 12px;border-radius:12px;border:1px solid var(--line);background:#0f1320;min-height:44px}
+  input[type=text]::placeholder{color:#5c6378}
+  select{appearance:none;-webkit-appearance:none;background-image:linear-gradient(45deg,transparent 50%,var(--muted) 50%),linear-gradient(135deg,var(--muted) 50%,transparent 50%);background-position:calc(100% - 18px) 50%,calc(100% - 13px) 50%;background-size:5px 5px;background-repeat:no-repeat}
+  label.f{display:block;font-size:12px;color:var(--muted);margin:10px 0 4px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:var(--pad);margin:0 0 12px}
+  .card h3{margin:0 0 8px;font-size:15px} .card h3 small{color:var(--muted);font-weight:500;font-size:12px;margin-left:6px}
+  .muted{color:var(--muted)} .small{font-size:12px} .tiny{font-size:11px} .green{color:var(--green)} .red{color:var(--red)} .amber{color:var(--amber)} .violet{color:var(--violet)}
+  .row{display:flex;gap:8px;align-items:center;flex-wrap:wrap} .row.between{justify-content:space-between} .grow{flex:1}
+  .hidden{display:none !important}
+
+  /* join */
+  #join{max-width:460px;margin:0 auto;padding:28px 16px calc(24px + var(--safe-b))}
+  #join h1{font-size:26px;margin:18px 0 2px;color:var(--violet)} #join .tag{color:var(--muted);margin:0 0 20px}
+  #join .logo{width:72px;height:72px;border-radius:20px;background:linear-gradient(135deg,#1c2238,#0f1320);display:flex;align-items:center;justify-content:center;font-size:34px;border:1px solid var(--line)}
+  .code-input{font:700 28px/1 ui-monospace,Menlo,Consolas,monospace;letter-spacing:.35em;text-transform:uppercase;text-align:center}
+  #join .or{text-align:center;color:var(--muted);margin:14px 0;font-size:13px}
+  #join ul{padding-left:18px;color:var(--muted);font-size:13px;margin:6px 0}
+  #joinError{color:var(--red);font-size:13px;min-height:18px;margin-top:8px}
+
+  /* main */
+  #main{display:flex;flex-direction:column;min-height:100dvh}
+  header{position:sticky;top:0;z-index:5;background:rgba(11,13,20,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);padding:10px 12px;display:flex;gap:8px;align-items:center}
+  header .code{font:700 18px/1 ui-monospace,Menlo,Consolas,monospace;letter-spacing:.2em;color:var(--violet)}
+  header .dot{width:9px;height:9px;border-radius:50%;background:var(--red)} header .dot.live{background:var(--green)} header .dot.wait{background:var(--amber)}
+  header .members{font-size:12px;color:var(--muted);flex:1;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+  header button{min-height:36px;padding:6px 10px;font-size:13px}
+  #pingBanner{position:sticky;top:57px;z-index:4;margin:0;padding:12px 16px;background:var(--amber);color:#0b0d14;font-weight:800;text-align:center;font-size:17px;cursor:pointer}
+  main{flex:1;padding:12px 12px calc(76px + var(--safe-b));max-width:720px;width:100%;margin:0 auto}
+  nav.tabs{position:fixed;left:0;right:0;bottom:0;z-index:5;display:flex;background:rgba(11,13,20,.96);border-top:1px solid var(--line);padding:6px 6px calc(6px + var(--safe-b))}
+  nav.tabs button{flex:1;background:transparent;color:var(--muted);border-radius:12px;padding:8px 4px;font-size:12px;display:flex;flex-direction:column;align-items:center;gap:2px}
+  nav.tabs button span{font-size:20px} nav.tabs button.on{color:var(--fg);background:var(--card)}
+
+  /* journal */
+  .seg{display:flex;background:#0f1320;border-radius:12px;padding:3px;gap:3px}
+  .seg button{flex:1;min-height:38px;padding:6px 4px;background:transparent;color:var(--muted);font-size:13px;border-radius:10px}
+  .seg button.on{background:var(--card2);color:var(--fg);font-weight:700}
+  .evgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+  .ev{min-height:50px;border-radius:12px;background:var(--card2);padding:8px 10px;text-align:left;display:flex;align-items:center;gap:10px;font-weight:600;font-size:14px}
+  .ev .k{width:26px;height:26px;border-radius:8px;background:rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;font-size:13px;flex:none}
+  .ev.found{background:rgba(95,227,161,.16);color:var(--green)} .ev.found .k{background:var(--green);color:#0b0d14}
+  .ev.out{background:rgba(255,92,108,.14);color:var(--red);text-decoration:line-through} .ev.out .k{background:var(--red);color:#0b0d14}
+  .ggrid{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+  .g{min-height:58px;border-radius:12px;background:var(--card2);padding:7px 8px;text-align:left;display:flex;flex-direction:column;justify-content:center;gap:2px;line-height:1.2}
+  .g .n{font-weight:700;font-size:13px;color:var(--green)} .g .e{font-size:11px;color:var(--muted);letter-spacing:.08em}
+  .g.out{opacity:.38} .g.out .n{color:var(--muted)} .g.dim{opacity:.6} .g.dim .n{color:var(--amber)}
+  .g.one{background:rgba(95,227,161,.16);grid-column:1/-1;min-height:66px} .g.one .n{font-size:18px}
+  @media(min-width:520px){.ggrid{grid-template-columns:repeat(5,1fr)}.evgrid{grid-template-columns:repeat(4,1fr)}}
+
+  /* timers */
+  .timers{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+  .t{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:12px;display:flex;flex-direction:column;gap:6px}
+  .t .n{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em} .t .c{font:700 38px/1 ui-monospace,Menlo,Consolas,monospace;color:var(--fg)}
+  .t.run .c{color:var(--green)} .t.done .c{color:var(--red)} .t .l{font-size:11px;color:var(--muted);min-height:14px}
+  .t button{min-height:40px}
+  .ms{font-size:11px;color:var(--muted)} .ms b{color:var(--amber)}
+  input[type=range]{width:100%;accent-color:var(--amber);height:44px}
+  .pings{display:grid;grid-template-columns:repeat(4,1fr);gap:8px} .pings button{min-height:56px;font-size:13px;display:flex;flex-direction:column;gap:2px;align-items:center;justify-content:center;background:var(--card2)} .pings button span{font-size:22px}
+
+  /* party */
+  table{width:100%;border-collapse:collapse;font-size:14px} td,th{padding:6px 4px;text-align:left;border-bottom:1px solid var(--line)} th{color:var(--muted);font-weight:600;font-size:12px} td.r,th.r{text-align:right}
+  .chips{display:flex;gap:6px;flex-wrap:wrap} .chips button.chip{min-height:36px;padding:6px 12px} .chip.on{background:rgba(255,92,108,.2);color:var(--red)} .chip{padding:5px 10px;border-radius:999px;background:var(--card2);font-size:13px} .chip.me{background:rgba(167,156,255,.2);color:var(--violet)} .chip.dead{text-decoration:line-through;color:var(--muted)}
+  .stars{color:var(--amber);letter-spacing:.1em}
+  .bingo{display:grid;grid-template-columns:repeat(5,1fr);gap:4px}
+  .bingo button{min-height:62px;padding:4px;font-size:10px;line-height:1.15;border-radius:8px;background:var(--card2);color:var(--fg);word-break:break-word;hyphens:auto}
+  .bingo button.on{background:rgba(95,227,161,.22);color:var(--green);font-weight:700} .bingo button.free{background:rgba(167,156,255,.2);color:var(--violet);font-weight:700}
+  .bingo button.line{outline:2px solid var(--amber);outline-offset:-2px}
+  @media(min-width:420px){.bingo button{font-size:11px;min-height:70px}}
+  .toast{position:fixed;left:50%;bottom:calc(84px + var(--safe-b));transform:translateX(-50%);background:var(--card2);border:1px solid var(--line);padding:10px 16px;border-radius:12px;font-size:14px;z-index:9;max-width:92vw;text-align:center;box-shadow:0 6px 24px rgba(0,0,0,.5)}
+
+  /* sheet */
+  .sheet-bg{position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:20;display:flex;align-items:flex-end;justify-content:center}
+  .sheet{background:var(--card);border-radius:18px 18px 0 0;padding:16px 16px calc(20px + var(--safe-b));max-width:720px;width:100%;max-height:85dvh;overflow:auto;border:1px solid var(--line)}
+  .sheet h2{margin:0 0 6px;font-size:22px} .sheet dt{color:var(--muted);font-size:12px;margin-top:10px} .sheet dd{margin:2px 0 0} .sheet ul{margin:4px 0;padding-left:18px}
+</style>
+</head>
+<body>
+<section id="join"></section>
+<section id="main" class="hidden">
+  <header>
+    <span class="dot" id="dot"></span>
+    <span class="code" id="hdrCode"></span>
+    <span class="members" id="hdrMembers"></span>
+    <button id="btnSound" title="sound">🔔</button>
+    <button id="btnLang">EL</button>
+    <button id="btnLeave" class="ghost">✕</button>
+  </header>
+  <div id="pingBanner" class="hidden"></div>
+  <main id="content"></main>
+  <nav class="tabs" id="tabs"></nav>
+</section>
+<div id="sheet"></div>
+<div id="toast" class="toast hidden"></div>
+<script type="module" src="app.js"></script>
+</body>
+</html>
