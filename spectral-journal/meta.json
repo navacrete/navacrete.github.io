@@ -1,11 +1,11 @@
 {
-  "latestVersionCode": 7,
-  "latestVersionName": "0.9.6-beta",
-  "messageId": "",
+  "latestVersionCode": 13,
+  "latestVersionName": "0.10.0-beta",
+  "messageId": "play-public-2026-11-15",
   "message": {
-    "en": "",
-    "el": ""
+    "en": "Spectral Journal is now public on Google Play – thank you for testing! Updates arrive through Play from now on; share the link with your team.",
+    "el": "Το Spectral Journal είναι πλέον δημόσιο στο Google Play – ευχαριστούμε για τις δοκιμές! Οι ενημερώσεις έρχονται πια από το Play· μοιράσου τον σύνδεσμο με την ομάδα σου."
   },
-  "messageUrl": "",
+  "messageUrl": "https://play.google.com/store/apps/details?id=com.spectraljournal.app",
   "roomServer": "https://spectral-journal.high-beach-hotels.workers.dev"
 }

@@ -25,7 +25,7 @@ const T = {
     name: "Your name", code: "Room code", join: "Join room", create: "Create a new room", or: "or",
     howTitle: "How it works", how1: "Someone creates a room (here or in the Android app) and shares the 5-letter code.",
     how2: "Evidence, ghosts, timers, sanity, notes and party mode stay in sync on every device.", how3: "No account. Rooms delete themselves 24 h after the last activity.",
-    androidNote: "The Android app adds behaviours, maps, voice alerts and more – this page is the lightweight version for everyone else.",
+    androidNote: "The Android app adds behaviours, maps, voice alerts and more – this page is the lightweight version for everyone else.", getApp: "Get the Android app on Google Play",
     badCode: "Codes have 5 letters/digits (no 0, O, 1, I).", noRoom: "No room with this code – check it or create a new one.", cantReach: "Cannot reach the room server right now.",
     full: "The room is full (8 players).", connecting: "connecting…", reconnecting: "reconnecting…", live: "live",
     tabJournal: "Journal", tabTimers: "Timers", tabParty: "Party",
@@ -52,7 +52,7 @@ const T = {
     name: "Το όνομά σου", code: "Κωδικός δωματίου", join: "Είσοδος", create: "Νέο δωμάτιο", or: "ή",
     howTitle: "Πώς δουλεύει", how1: "Κάποιος φτιάχνει δωμάτιο (εδώ ή στην εφαρμογή Android) και μοιράζεται τον 5ψήφιο κωδικό.",
     how2: "Αποδείξεις, φαντάσματα, χρονόμετρα, λογική, σημειώσεις και party mode συγχρονίζονται σε κάθε συσκευή.", how3: "Χωρίς λογαριασμό. Τα δωμάτια σβήνονται 24 ώρες μετά την τελευταία κίνηση.",
-    androidNote: "Η εφαρμογή Android έχει επιπλέον συμπεριφορές, χάρτες, φωνητικές ειδοποιήσεις – αυτή η σελίδα είναι η ελαφριά έκδοση για όλους τους άλλους.",
+    androidNote: "Η εφαρμογή Android έχει επιπλέον συμπεριφορές, χάρτες, φωνητικές ειδοποιήσεις – αυτή η σελίδα είναι η ελαφριά έκδοση για όλους τους άλλους.", getApp: "Η εφαρμογή Android στο Google Play",
     badCode: "Ο κωδικός έχει 5 γράμματα/ψηφία (χωρίς 0, O, 1, I).", noRoom: "Δεν υπάρχει δωμάτιο με αυτόν τον κωδικό – έλεγξέ τον ή φτιάξε νέο.", cantReach: "Ο server δωματίων δεν απαντά αυτή τη στιγμή.",
     full: "Το δωμάτιο είναι γεμάτο (8 παίκτες).", connecting: "σύνδεση…", reconnecting: "επανασύνδεση…", live: "ζωντανά",
     tabJournal: "Ημερολόγιο", tabTimers: "Χρονόμετρα", tabParty: "Party",
@@ -332,7 +332,7 @@ function showJoin() {
       <div class="or">${L.or}</div>
       <button id="jCreate" style="width:100%">${L.create}</button>
     </div>
-    <div class="card"><h3>${L.howTitle}</h3><ul><li>${L.how1}</li><li>${L.how2}</li><li>${L.how3}</li></ul><p class="muted small" style="margin:8px 0 0">${L.androidNote}</p></div>
+    <div class="card"><h3>${L.howTitle}</h3><ul><li>${L.how1}</li><li>${L.how2}</li><li>${L.how3}</li></ul><p class="muted small" style="margin:8px 0 0">${L.androidNote} <a href="https://play.google.com/store/apps/details?id=com.spectraljournal.app" target="_blank" rel="noopener" style="color:var(--green)">${L.getApp} ↗</a></p></div>
     <p class="muted tiny">${L.footer}</p>`;
   $("jLang").onclick = () => { setLang(S.lang === "el" ? "en" : "el"); showJoin(); };
   $("jCode").addEventListener("input", (e) => { e.target.value = e.target.value.toUpperCase().replace(/[^A-Z0-9]/g, "").slice(0, 5); });
